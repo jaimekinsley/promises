@@ -12,5 +12,5 @@ fsPromises.writeFile('./test-file.txt', 'this is a new file with new text')
 const promiseToReadFile = fsPromises.readFile('./test-file.txt', { encoding: 'utf8' });
 
 promiseToReadFile
-  .then(contents => fsPromises.writeFile('./new-test-file', contents)
+  .then(contents => fsPromises.writeFile('./new-test-file.txt', contents)
     .then(console.log('Done with both!')));
