@@ -1,1 +1,1 @@
-Here's some sample text that can be read.
+Here's some Sample text that I can read.
