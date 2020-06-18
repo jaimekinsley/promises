@@ -13,6 +13,7 @@ const getCharacter = id => {
     }));
 };
 
+// export a function getManyCharacters that takes an array of ids and returns a promise that resolves with an array of characters
 const getManyCharacters = arr => {
   return Promise.all(arr.map((id) => getCharacter(id)));
 };
