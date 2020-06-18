@@ -13,6 +13,11 @@ const getCharacter = id => {
     }));
 };
 
+const getManyCharacters = arr => {
+  return Promise.all(arr.map((id) => getCharacter(id)));
+};
+
 module.exports = {
-  getCharacter
+  getCharacter,
+  getManyCharacters
 };
