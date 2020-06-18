@@ -10,16 +10,28 @@ request.get('http://futuramaapi.herokuapp.com/api/quotes/1')
   }))
   .then(quote => console.log(quote));
 
+// alternative
+request.get('http://futuramaapi.herokuapp.com/api/quotes/1')
+  .then(res => res.body[0])
+  .then(quote => console.log(quote));
+
+
 // How would you get more than 1 quote?
 request.get('http://futuramaapi.herokuapp.com/api/quotes/3')
   .then(({ body }) => {
-    return body.map(character => ({
-      character: character.character,
-      quote: character.quote,
-      image: character.image
+    return body.map(quote => ({
+      character: quote.character,
+      quote: quote.quote,
+      image: quote.image
     }));
   })
   .then(quote => console.log(quote));
+
+// alternative
+request.get('http://futuramaapi.herokuapp.com/api/quotes/3')
+  .then(({ body }) => {
+    body.forEach(quote => console.log(quote));
+  });
 
 // How would you get only quotes by Bender?
 request.get('http://futuramaapi.herokuapp.com/api/characters/bender')
@@ -31,3 +43,11 @@ request.get('http://futuramaapi.herokuapp.com/api/characters/bender')
     }));
   })
   .then(quote => console.log(quote));
+
+// alternative
+request.get('http://futuramaapi.herokuapp.com/api/characters/bender')
+  .then(({ body }) => {
+    body.forEach(quote => console.log(quote));
+  });
+
+
