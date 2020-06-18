@@ -14,8 +14,14 @@ const request = require('superagent');
 // HINT: use Promise.all
 request.get('https://rickandmortyapi.com/api/character/')
   .then(({ body }) => {
-    const requests = body.results.map(result => request.get(result.origin.url));
+    const requests = body.results.map(result => {
+      if(result.origin.url){
+        return request.get(result.origin.url);
+      }
+    });
     return Promise.all(requests);
   })
-  .then(responses => {console.log(responses[0].body);
-  });
+  .then(responses => responses.map(location => {
+    if(location) return JSON.parse(location.text);
+  }))
+  .then(console.log);
