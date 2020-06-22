@@ -1,7 +1,7 @@
 const { getCharacter, getManyCharacters } = require('../rickAndMortyApi');
 
 jest.mock('superagent', () => ({
-  get: () => {
+  get() {
     return Promise.resolve({
       body: {
         id: 1,
